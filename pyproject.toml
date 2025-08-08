@@ -33,16 +33,17 @@ Issues = "https://github.com/RyuichiSuzuki101111/winglet/issues"
 line-length = 88
 
 [tool.ruff.lint]
-extend-select = ["D"]
+select = ["ALL"]
+extend-ignore = ["E501"]
 
-[tool.ruff.lint.isort]
-known-first-party = ["winglet"]
+[tool.ruff.lint.pydocstyle]
+convention = "google"
 
 [tool.ruff.format]
 quote-style = "single"
 
-[tool.ruff.lint.pydocstyle]
-convention = "google"
+[tool.ruff.lint.isort]
+known-first-party = ["winglet"]
 
 [tool.mypy]
 strict = true
