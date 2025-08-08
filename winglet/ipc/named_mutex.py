@@ -1,7 +1,10 @@
 # winglet/ipc/named_mutex.py
 from __future__ import annotations
 
-from types import TracebackType
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from types import TracebackType
 
 
 class NamedMutex:
