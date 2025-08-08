@@ -28,3 +28,23 @@ build-backend = "flit_core.buildapi"
 Homepage = "https://github.com/RyuichiSuzuki101111/winglet"
 Source = "https://github.com/RyuichiSuzuki101111/winglet"
 Issues = "https://github.com/RyuichiSuzuki101111/winglet/issues"
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+extend-select = ["D"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["winglet"]
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.mypy]
+strict = true
+disallow_untyped_defs = true
+warn_unused_ignores = true
