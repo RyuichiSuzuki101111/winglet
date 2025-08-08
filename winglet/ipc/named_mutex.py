@@ -91,21 +91,17 @@ class NamedMutex:
 
     def release(self) -> None:
         logger.info("Releasing mutex '%s'", self._name)
-        if self._handle is None:
-            logger.warning("Cannot release mutex '%s': handle is None", self._name)
-            return
-
         win32event.ReleaseMutex(self._handle)
 
     def __del__(self) -> None:
-        if self._enable_auto_cleanup and self._handle is not None:
-            with suppress(Exception):
-                self.release()
-            logger.info("Cleaning up mutex '%s'", self._name)
-            with suppress(Exception):
-                win32api.CloseHandle(self._handle)
-        else:
-            logger.info("Skipping cleanup for mutex '%s'", self._name)
+        if not self._enable_auto_cleanup:
+            return
+
+        with suppress(Exception):
+            self.release()
+        logger.info("Cleaning up mutex '%s'", self._name)
+        with suppress(Exception):
+            win32api.CloseHandle(self._handle)
 
     def __enter__(self) -> bool:
         logger.info("Entering context for mutex '%s'", self._name)
