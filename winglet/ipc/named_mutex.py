@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 
 class NamedMutex:
-    def __init__(self, name: str, enable_auto_cleanup: bool = True) -> None:
+    def __init__(self, name: str, *, enable_auto_cleanup: bool = True) -> None:
         self._name = name
         self._enable_auto_cleanup = enable_auto_cleanup
 
